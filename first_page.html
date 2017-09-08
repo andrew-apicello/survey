@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Survey</title>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<style type="text/css">
+		
+		body{
+			background-image: url(https://www.xtns.org/wp-content/uploads/2014/06/hotel-resort-sweet-caribbean-resort-lake-buena-vista-caribbean-beach-resort-queen-beds-caribbean-beach-resort-quick-service-dining-disney-caribbean-beach-resort-queen-beds-caribbean-resort-private.jpg);
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-position: center center;
+			background-size: height: 100% width: 100%;	
+		}
+
+		.container{
+			background-color: white;
+			margin-left: 10%;
+			margin-right: 10%;
+		}
+
+		
+		table{
+			margin: auto;
+		}
+
+		td{
+			background-color: lightgray;
+			font-weight: bold;
+			right: 30px;
+			padding: 15px;
+			margin: 5px;
+			float: left;
+		}
+
+		h2{
+			padding: 20px;
+		}
+
+		h1{
+			padding: 40px;
+		}
+
+		table{
+			align-content: center;
+		}
+
+
+		.selected{
+			background-color: lightgreen;
+		}
+
+		.unselected{
+			background-color: lightgray;
+		}
+
+		a h2{
+			text-decoration: none;
+			border: solid;
+			text-align: center;
+			border-color: black;
+		}
+
+	</style>
+
+</head>
+
+<body>
+	<div class="container">
+		<h1>The Breezy Survey</h1>
+		<h2 id="timer">Time Remaining: 30 seconds</h2>
+		<h2>Question 1: How many months are there in a year?</h2>
+		<table id="q1">
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+				<td>5</td>
+				<td>6</td>
+				<td>7</td>
+				<td>8</td>
+				<td>9</td>
+				<td>10</td>
+				<td>11</td>
+				<td>12</td>
+			</tr>
+		</table>
+		<hr>
+		<h2>Question 2: How many days are there in a year?</h2>
+		<table id="q2">
+			<tr>
+				<td>360</td>
+				<td>361</td>
+				<td>362</td>
+				<td>362</td>
+				<td>364</td>
+				<td>365</td>
+				<td>366</td>
+				<td>367</td>
+				<td>368</td>
+				<td>369</td>
+				<td>370</td>
+			</tr>
+		</table>
+		<hr>
+		<h2>Question 3: Which month has the least number of days?</h2>
+		<table id="q3">
+			<tr>
+				<td>January</td>
+				<td>February</td>
+				<td>March</td>
+				<td>April</td>
+				<td>May</td>
+				<td>June</td>
+				<td>July</td>
+				<td>August</td>
+				<td>September</td>
+				<td>October</td>
+				<td>November</td>
+				<td>December</td>
+			</tr>
+		</table>
+		<hr>
+		<a><h2 id="submit">Submit</h2></a>
+	</div>
+	<!-- Ideas: Progress Bar -->
+
+
+
+	<script type="text/javascript">
+
+//Create clock
+	var time = 30;
+	// setInterval(count, 1000);
+	function count(){
+		time = time - 1
+		if (time <= 0){
+			alert("Time's up! Try Again!");
+			time = 30;
+		}
+		var timer = $("#timer");
+		timer.text("Time Remaining: " + time + " seconds")
+	}
+
+
+
+
+var answerOne = 0
+var answerTwo = 0
+var answerThree = 0
+
+
+
+var firstQuestion = $("#q1")
+					.children()
+			        .eq(0)
+			        .children("tr")
+			        .eq(0)
+			        .children("td")
+
+var secondQuestion = $("#q2")
+					.children()
+			        .eq(0)
+			        .children("tr")
+			        .eq(0)
+			        .children("td")
+
+var thirdQuestion = $("#q3")
+					.children()
+			        .eq(0)
+			        .children("tr")
+			        .eq(0)
+			        .children("td")				       		        
+			   
+
+
+function unSelectFirst(){
+	for (i=0;i<12;i++){
+		firstQuestion.eq(i).attr("class","unselected")
+	}
+}
+function unSelectSecond(){
+	for (i=0;i<12;i++){
+		secondQuestion.eq(i).attr("class","unselected")
+	}
+}
+function unSelectThird(){
+	for (i=0;i<12;i++){
+		thirdQuestion.eq(i).attr("class","unselected")
+	}
+}
+
+
+var correct = 0
+var incorrect = 3
+
+
+function checkDone(){
+	correct = answerOne + answerTwo + answerThree;
+	incorrect = 3 - correct;
+	}
+
+
+
+
+$("#submit").click(function(){
+	document.write("<body><div class=\"container\"><h1>Thank you for your response!</h1><h2>Number Correct: " + correct + "</h2><h2>Number Incorrect: " + incorrect + "</h2></div></body>")
+});
+
+
+
+
+
+
+
+
+firstQuestion.eq(0).click(function(){
+	answerOne = 0;
+	unSelectFirst()
+	firstQuestion.eq(0).attr("class","selected")
+	console.log(answerOne);
+	checkDone()
+
+});
+firstQuestion.eq(1).click(function(){
+	answerOne = 0;
+	unSelectFirst()
+	firstQuestion.eq(1).attr("class","selected")
+	console.log(answerOne);
+	checkDone()
+});
+firstQuestion.eq(2).click(function(){
+	answerOne = 0;
+	unSelectFirst()
+	firstQuestion.eq(2).attr("class","selected")
+	console.log(answerOne);
+	checkDone()
+});	
+firstQuestion.eq(3).click(function(){
+	answerOne = 0;
+	unSelectFirst()
+	firstQuestion.eq(3).attr("class","selected")
+	console.log(answerOne);
+	checkDone()
+});
+firstQuestion.eq(4).click(function(){
+	answerOne = 0;
+	unSelectFirst()
+	firstQuestion.eq(4).attr("class","selected")
+	console.log(answerOne);
+	checkDone()
+});
+firstQuestion.eq(5).click(function(){
+	answerOne = 0;
+	unSelectFirst()
+	firstQuestion.eq(5).attr("class","selected")
+	console.log(answerOne);
+	checkDone()
+});
+firstQuestion.eq(6).click(function(){
+	answerOne = 0;
+	unSelectFirst()
+	firstQuestion.eq(6).attr("class","selected")
+	console.log(answerOne);
+	checkDone()
+});
+firstQuestion.eq(7).click(function(){
+	answerOne = 0;
+	unSelectFirst()
+	firstQuestion.eq(7).attr("class","selected")
+	console.log(answerOne);
+	checkDone()
+});
+firstQuestion.eq(8).click(function(){
+	answerOne = 0;
+	unSelectFirst()
+	firstQuestion.eq(8).attr("class","selected")
+	console.log(answerOne);
+	checkDone()
+});
+firstQuestion.eq(9).click(function(){
+	answerOne = 0;
+	unSelectFirst()
+	firstQuestion.eq(9).attr("class","selected")
+	console.log(answerOne);
+	checkDone()
+});
+firstQuestion.eq(10).click(function(){
+	answerOne = 0;
+	unSelectFirst()
+	firstQuestion.eq(10).attr("class","selected")
+	console.log(answerOne);
+	checkDone()
+});
+firstQuestion.eq(11).click(function(){
+	answerOne = 1;
+	unSelectFirst()
+	firstQuestion.eq(11).attr("class","selected")
+	console.log(answerOne);
+	checkDone()
+});
+
+
+
+secondQuestion.eq(0).click(function(){
+	answerTwo = 0;
+	unSelectSecond()
+	secondQuestion.eq(0).attr("class","selected")
+	console.log(answerTwo);
+	checkDone()
+});
+secondQuestion.eq(1).click(function(){
+	answerTwo = 0;
+	unSelectSecond()
+	secondQuestion.eq(1).attr("class","selected")
+	console.log(answerTwo);
+	checkDone()
+});
+secondQuestion.eq(2).click(function(){
+	answerTwo = 0;
+	unSelectSecond()
+	secondQuestion.eq(2).attr("class","selected")
+	console.log(answerTwo);
+	checkDone()
+});
+secondQuestion.eq(3).click(function(){
+	answerTwo = 0;
+	unSelectSecond()
+	secondQuestion.eq(3).attr("class","selected")
+	console.log(answerTwo);
+	checkDone()
+});
+secondQuestion.eq(4).click(function(){
+	answerTwo = 0;
+	unSelectSecond()
+	secondQuestion.eq(4).attr("class","selected")
+	console.log(answerTwo);
+	checkDone()
+});
+secondQuestion.eq(5).click(function(){
+	answerTwo = 1;
+	unSelectSecond()
+	secondQuestion.eq(5).attr("class","selected")
+	console.log(answerTwo);
+	checkDone()
+});
+secondQuestion.eq(6).click(function(){
+	answerTwo = 0;
+	unSelectSecond()
+	secondQuestion.eq(6).attr("class","selected")
+	console.log(answerTwo);
+	checkDone()
+});
+secondQuestion.eq(7).click(function(){
+	answerTwo = 0;
+	unSelectSecond()
+	secondQuestion.eq(7).attr("class","selected")
+	console.log(answerTwo);
+	checkDone()
+});
+secondQuestion.eq(8).click(function(){
+	answerTwo = 0;
+	unSelectSecond()
+	secondQuestion.eq(8).attr("class","selected")
+	console.log(answerTwo);
+	checkDone()
+});
+secondQuestion.eq(9).click(function(){
+	answerTwo = 0;
+	unSelectSecond()
+	secondQuestion.eq(9).attr("class","selected")
+	console.log(answerTwo);
+	checkDone()
+});
+secondQuestion.eq(10).click(function(){
+	answerTwo = 0;
+	unSelectSecond()
+	secondQuestion.eq(10).attr("class","selected")
+	console.log(answerTwo);
+	checkDone()
+});
+
+
+
+
+thirdQuestion.eq(0).click(function(){
+	answerThree = 0;
+	unSelectThird()
+	thirdQuestion.eq(0).attr("class","selected")
+	console.log(answerThree);
+	checkDone()
+});
+thirdQuestion.eq(1).click(function(){
+	answerThree = 1;
+	unSelectThird()
+	thirdQuestion.eq(1).attr("class","selected")
+	console.log(answerThree);
+	checkDone()
+});
+thirdQuestion.eq(2).click(function(){
+	answerThree = 0;
+	unSelectThird()
+	thirdQuestion.eq(2).attr("class","selected")
+	console.log(answerThree);
+	checkDone()
+});
+thirdQuestion.eq(3).click(function(){
+	answerThree = 0;
+	unSelectThird()
+	thirdQuestion.eq(3).attr("class","selected")
+	console.log(answerThree);
+	checkDone()
+});
+thirdQuestion.eq(4).click(function(){
+	answerThree = 0;
+	unSelectThird()
+	thirdQuestion.eq(4).attr("class","selected")
+	console.log(answerThree);
+	checkDone()
+});
+thirdQuestion.eq(5).click(function(){
+	answerThree = 0;
+	unSelectThird()
+	thirdQuestion.eq(5).attr("class","selected")
+	console.log(answerThree);
+	checkDone()
+});
+thirdQuestion.eq(6).click(function(){
+	answerThree = 0;
+	unSelectThird()
+	thirdQuestion.eq(6).attr("class","selected")
+	console.log(answerThree);
+	checkDone()
+});
+thirdQuestion.eq(7).click(function(){
+	answerThree = 0;
+	unSelectThird()
+	thirdQuestion.eq(7).attr("class","selected")
+	console.log(answerThree);
+	checkDone()
+});
+thirdQuestion.eq(8).click(function(){
+	answerThree = 0;
+	unSelectThird()
+	thirdQuestion.eq(8).attr("class","selected")
+	console.log(answerThree);
+	checkDone()
+});
+thirdQuestion.eq(9).click(function(){
+	answerThree = 0;
+	unSelectThird()
+	thirdQuestion.eq(9).attr("class","selected")
+	console.log(answerThree);
+	checkDone()
+});
+thirdQuestion.eq(10).click(function(){
+	answerThree = 0;
+	unSelectThird()
+	thirdQuestion.eq(10).attr("class","selected")
+	console.log(answerThree);
+	checkDone()
+});
+thirdQuestion.eq(11).click(function(){
+	answerThree = 0;
+	unSelectThird()
+	thirdQuestion.eq(11).attr("class","selected")
+	console.log(answerThree);
+	checkDone()
+});
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>
